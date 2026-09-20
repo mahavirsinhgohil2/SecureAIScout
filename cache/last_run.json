@@ -1,0 +1,371 @@
+{
+  "events": [
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "investigate",
+      "event_type": "thinking",
+      "message": "I\u2019m reviewing the bundled ShopEasy demo.",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "investigate",
+      "event_type": "tool_call",
+      "message": "I\u2019m scanning the demo files for the six known patterns.",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "investigate",
+      "event_type": "result",
+      "message": "I found 7 areas to review.",
+      "details": {
+        "found": 7
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "triage",
+      "event_type": "result",
+      "message": "Confirmed: A secret is visible in source code needs a fix.",
+      "details": {
+        "finding_id": "hardcoded_secret_1"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "triage",
+      "event_type": "result",
+      "message": "Confirmed: Passwords are protected with weak hashing needs a fix.",
+      "details": {
+        "finding_id": "weak_crypto_2"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "triage",
+      "event_type": "result",
+      "message": "Confirmed: Login can be bypassed needs a fix.",
+      "details": {
+        "finding_id": "sql_injection_3"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "triage",
+      "event_type": "result",
+      "message": "Confirmed: Attacker can run commands on your server needs a fix.",
+      "details": {
+        "finding_id": "command_injection_4"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "triage",
+      "event_type": "result",
+      "message": "Confirmed: Attackers can inject scripts into a page needs a fix.",
+      "details": {
+        "finding_id": "xss_5"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "triage",
+      "event_type": "result",
+      "message": "False alarm removed: Login can be bypassed is protected by a table allowlist.",
+      "details": {
+        "finding_id": "sql_injection_6"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "triage",
+      "event_type": "result",
+      "message": "Confirmed: Uploaded data can take over the server needs a fix.",
+      "details": {
+        "finding_id": "unsafe_pickle_7"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "triage",
+      "event_type": "summary",
+      "message": "I removed the allowlisted table lookup from the real-risk list.",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "fix",
+      "event_type": "tool_result",
+      "message": "I prepared a targeted fix for A secret is visible in source code.",
+      "details": {
+        "finding_id": "hardcoded_secret_1"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "verify",
+      "event_type": "success",
+      "message": "Verified: A secret is visible in source code passes the checks.",
+      "details": {
+        "finding_id": "hardcoded_secret_1",
+        "proof": "syntax check passed; sandbox rescan passed; demo tests passed"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:44",
+      "stage": "fix",
+      "event_type": "tool_result",
+      "message": "I prepared a targeted fix for Passwords are protected with weak hashing.",
+      "details": {
+        "finding_id": "weak_crypto_2"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:45",
+      "stage": "verify",
+      "event_type": "success",
+      "message": "Verified: Passwords are protected with weak hashing passes the checks.",
+      "details": {
+        "finding_id": "weak_crypto_2",
+        "proof": "syntax check passed; sandbox rescan passed; demo tests passed"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:45",
+      "stage": "fix",
+      "event_type": "tool_result",
+      "message": "I prepared a targeted fix for Login can be bypassed.",
+      "details": {
+        "finding_id": "sql_injection_3"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:45",
+      "stage": "verify",
+      "event_type": "success",
+      "message": "Verified: Login can be bypassed passes the checks.",
+      "details": {
+        "finding_id": "sql_injection_3",
+        "proof": "syntax check passed; sandbox rescan passed; demo tests passed"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:45",
+      "stage": "fix",
+      "event_type": "tool_result",
+      "message": "I prepared a targeted fix for Attacker can run commands on your server.",
+      "details": {
+        "finding_id": "command_injection_4"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:45",
+      "stage": "verify",
+      "event_type": "failed",
+      "message": "The first fix for Attacker can run commands on your server did not pass, so I\u2019ll retry it.",
+      "details": {
+        "finding_id": "command_injection_4",
+        "proof": "syntax check passed; command safety check failed because unsafe command execution remains"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:45",
+      "stage": "fix",
+      "event_type": "tool_result",
+      "message": "I prepared a targeted fix for Attacker can run commands on your server.",
+      "details": {
+        "finding_id": "command_injection_4"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:46",
+      "stage": "verify",
+      "event_type": "success",
+      "message": "Verified: Attacker can run commands on your server passes the checks.",
+      "details": {
+        "finding_id": "command_injection_4",
+        "proof": "syntax check passed; command safety check passed; sandbox rescan passed; demo tests passed"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:46",
+      "stage": "fix",
+      "event_type": "tool_result",
+      "message": "I prepared a targeted fix for Attackers can inject scripts into a page.",
+      "details": {
+        "finding_id": "xss_5"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:46",
+      "stage": "verify",
+      "event_type": "success",
+      "message": "Verified: Attackers can inject scripts into a page passes the checks.",
+      "details": {
+        "finding_id": "xss_5",
+        "proof": "syntax check passed; sandbox rescan passed; demo tests passed"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:46",
+      "stage": "fix",
+      "event_type": "tool_result",
+      "message": "I prepared a targeted fix for Uploaded data can take over the server.",
+      "details": {
+        "finding_id": "unsafe_pickle_7"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:46",
+      "stage": "verify",
+      "event_type": "success",
+      "message": "Verified: Uploaded data can take over the server passes the checks.",
+      "details": {
+        "finding_id": "unsafe_pickle_7",
+        "proof": "syntax check passed; sandbox rescan passed; demo tests passed"
+      }
+    },
+    {
+      "timestamp": "2026-09-20T11:25:46",
+      "stage": "report",
+      "event_type": "summary",
+      "message": "The review is ready for your approval.",
+      "details": {
+        "risk_before": 78,
+        "risk_after": 1,
+        "verified": 6
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "hardcoded_secret_1",
+      "file_path": "C:\\Users\\mahav\\OneDrive\\Documents\\GitHub\\SecureAIScout\\demo_app\\app.py",
+      "line_number": 10,
+      "severity": "high",
+      "issue_type": "hardcoded_secret",
+      "raw_code": "secret_key = \"shopeasy-local-demo-secret\"",
+      "plain_english_title": "A secret is visible in source code",
+      "attacker_impact": "Anyone who can view the repository may reuse this secret.",
+      "is_real": true,
+      "triage_reasoning": "This input reaches a sensitive operation without a strong safety check, so it needs a fix.",
+      "original_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "fixed_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = os.environ.get(\"SHOP_EASY_SECRET\", \"local-demo-only\")\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "verification_proof": "syntax check passed; sandbox rescan passed; demo tests passed",
+      "attempts": 1,
+      "approved": false,
+      "rejected": false
+    },
+    {
+      "id": "weak_crypto_2",
+      "file_path": "C:\\Users\\mahav\\OneDrive\\Documents\\GitHub\\SecureAIScout\\demo_app\\app.py",
+      "line_number": 32,
+      "severity": "medium",
+      "issue_type": "weak_crypto",
+      "raw_code": "password_hash = hashlib.md5(password.encode()).hexdigest()",
+      "plain_english_title": "Passwords are protected with weak hashing",
+      "attacker_impact": "Leaked password hashes could be cracked quickly.",
+      "is_real": true,
+      "triage_reasoning": "This input reaches a sensitive operation without a strong safety check, so it needs a fix.",
+      "original_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "fixed_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.sha256(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "verification_proof": "syntax check passed; sandbox rescan passed; demo tests passed",
+      "attempts": 1,
+      "approved": false,
+      "rejected": false
+    },
+    {
+      "id": "sql_injection_3",
+      "file_path": "C:\\Users\\mahav\\OneDrive\\Documents\\GitHub\\SecureAIScout\\demo_app\\app.py",
+      "line_number": 36,
+      "severity": "critical",
+      "issue_type": "sql_injection",
+      "raw_code": "query = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"",
+      "plain_english_title": "Login can be bypassed",
+      "attacker_impact": "An attacker may manipulate a database query and access another account.",
+      "is_real": true,
+      "triage_reasoning": "This input reaches a sensitive operation without a strong safety check, so it needs a fix.",
+      "original_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "fixed_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = \"SELECT username FROM users WHERE username = ? AND password_hash = ?\"\n\trow = connection.execute(query, (username, password_hash)).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "verification_proof": "syntax check passed; sandbox rescan passed; demo tests passed",
+      "attempts": 1,
+      "approved": false,
+      "rejected": false
+    },
+    {
+      "id": "command_injection_4",
+      "file_path": "C:\\Users\\mahav\\OneDrive\\Documents\\GitHub\\SecureAIScout\\demo_app\\app.py",
+      "line_number": 47,
+      "severity": "critical",
+      "issue_type": "command_injection",
+      "raw_code": "os.system(f\"ping {host}\")",
+      "plain_english_title": "Attacker can run commands on your server",
+      "attacker_impact": "An attacker may execute operating-system commands through this input.",
+      "is_real": true,
+      "triage_reasoning": "This input reaches a sensitive operation without a strong safety check, so it needs a fix.",
+      "original_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "fixed_content": "import subprocess\nimport hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tsubprocess.run([\"ping\", \"-c\", \"1\", host], check=False, shell=False)\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "verification_proof": "syntax check passed; command safety check passed; sandbox rescan passed; demo tests passed",
+      "attempts": 2,
+      "approved": false,
+      "rejected": false
+    },
+    {
+      "id": "xss_5",
+      "file_path": "C:\\Users\\mahav\\OneDrive\\Documents\\GitHub\\SecureAIScout\\demo_app\\app.py",
+      "line_number": 54,
+      "severity": "high",
+      "issue_type": "xss",
+      "raw_code": "return render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")",
+      "plain_english_title": "Attackers can inject scripts into a page",
+      "attacker_impact": "A malicious comment could run in another user's browser.",
+      "is_real": true,
+      "triage_reasoning": "This input reaches a sensitive operation without a strong safety check, so it needs a fix.",
+      "original_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "fixed_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(\"<h1>ShopEasy comment</h1><p>{{ text }}</p>\", text=text)\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "verification_proof": "syntax check passed; sandbox rescan passed; demo tests passed",
+      "attempts": 1,
+      "approved": false,
+      "rejected": false
+    },
+    {
+      "id": "sql_injection_6",
+      "file_path": "C:\\Users\\mahav\\OneDrive\\Documents\\GitHub\\SecureAIScout\\demo_app\\app.py",
+      "line_number": 73,
+      "severity": "critical",
+      "issue_type": "sql_injection",
+      "raw_code": "rows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()",
+      "plain_english_title": "Login can be bypassed",
+      "attacker_impact": "An attacker may manipulate a database query and access another account.",
+      "is_real": false,
+      "triage_reasoning": "This table name is checked against a short list before the query runs, so unexpected table names are turned away.",
+      "original_content": null,
+      "fixed_content": null,
+      "verification_proof": null,
+      "attempts": 0,
+      "approved": false,
+      "rejected": false
+    },
+    {
+      "id": "unsafe_pickle_7",
+      "file_path": "C:\\Users\\mahav\\OneDrive\\Documents\\GitHub\\SecureAIScout\\demo_app\\app.py",
+      "line_number": 83,
+      "severity": "high",
+      "issue_type": "unsafe_pickle",
+      "raw_code": "profile = pickle.loads(payload)",
+      "plain_english_title": "Uploaded data can take over the server",
+      "attacker_impact": "A malicious serialized object may execute code on the server.",
+      "is_real": true,
+      "triage_reasoning": "This input reaches a sensitive operation without a strong safety check, so it needs a fix.",
+      "original_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = pickle.loads(payload)\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "fixed_content": "import hashlib\nimport os\nimport pickle\nimport sqlite3\n\nfrom flask import Flask, abort, jsonify, request, render_template_string\n\n\napp = Flask(\"ShopEasy\")\nsecret_key = \"shopeasy-local-demo-secret\"\napp.config[\"SECRET_KEY\"] = secret_key\n\nPRODUCTS = {\n\t\"1\": {\"name\": \"Canvas Tote\", \"price\": 18.0},\n\t\"2\": {\"name\": \"Steel Bottle\", \"price\": 24.0},\n}\nTABLES = {\"products\": PRODUCTS}\n\n\n@app.get(\"/\")\ndef home():\n\treturn jsonify(name=\"ShopEasy\", status=\"local demo\")\n\n\n@app.post(\"/login\")\ndef login():\n\tusername = request.form.get(\"username\", \"\")\n\tpassword = request.form.get(\"password\", \"\")\n\tif not username or not password:\n\t\treturn jsonify(error=\"username and password are required\"), 400\n\n\tpassword_hash = hashlib.md5(password.encode()).hexdigest()\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE users (username TEXT, password_hash TEXT)\")\n\tconnection.execute(\"INSERT INTO users VALUES ('demo', 'unused')\")\n\tquery = f\"SELECT username FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'\"\n\trow = connection.execute(query).fetchone()\n\tconnection.close()\n\treturn jsonify(authenticated=bool(row))\n\n\n@app.get(\"/ping\")\ndef ping():\n\thost = request.args.get(\"host\", \"\")\n\tif not host:\n\t\treturn jsonify(error=\"host is required\"), 400\n\tos.system(f\"ping {host}\")\n\treturn jsonify(host=host, status=\"sent\")\n\n\n@app.post(\"/comment\")\ndef comment():\n\ttext = request.form.get(\"text\", \"\")\n\treturn render_template_string(f\"<h1>ShopEasy comment</h1><p>{text}</p>\")\n\n\n@app.get(\"/product/<product_id>\")\ndef product(product_id):\n\tif product_id not in PRODUCTS:\n\t\tabort(404)\n\treturn jsonify(PRODUCTS[product_id])\n\n\n@app.get(\"/get-table\")\ndef get_table():\n\ttable_name = request.args.get(\"table\", \"\")\n\tif table_name not in TABLES:\n\t\treturn jsonify(error=\"choose a supported table\"), 400\n\tconnection = sqlite3.connect(\":memory:\")\n\tconnection.execute(\"CREATE TABLE products (id TEXT, name TEXT, price REAL)\")\n\tfor product_id, item in PRODUCTS.items():\n\t\tconnection.execute(\"INSERT INTO products VALUES (?, ?, ?)\", (product_id, item[\"name\"], item[\"price\"]))\n\trows = connection.execute(f\"SELECT id, name, price FROM {table_name}\").fetchall()\n\tconnection.close()\n\treturn jsonify(rows=rows)\n\n\n@app.post(\"/import-profile\")\ndef import_profile():\n\tpayload = request.get_data()\n\tif not payload:\n\t\treturn jsonify(error=\"profile data is required\"), 400\n\tprofile = {\"data\": payload.decode(\"utf-8\", errors=\"replace\")}\n\treturn jsonify(profile=profile)\n\n\nif __name__ == \"__main__\":\n\tapp.run(host=\"127.0.0.1\", port=5000, debug=False)\n",
+      "verification_proof": "syntax check passed; sandbox rescan passed; demo tests passed",
+      "attempts": 1,
+      "approved": false,
+      "rejected": false
+    }
+  ],
+  "risk_before": 78,
+  "risk_after": 1
+}

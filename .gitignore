@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+shop.db
+sandbox/
+cache/*.json
+!cache/last_run.json
