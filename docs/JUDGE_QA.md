@@ -24,25 +24,28 @@ The current implementation is intentionally limited to the bundled `demo_app/` a
 The verifier copies the demo into a temporary sandbox and never edits the original demo in place. The UI and runner operate locally, and the replay path needs no API or network.
 
 ## 8. What happens if the retry also fails?
-The agent emits a failed verification event and does not produce verifier proof. The finding cannot truthfully show Verified, and the export remains approval-gated.
+The model suggests a correction, but the verifier remains authoritative. In the final run the model returned no usable patch, so the built-in deterministic correction was used and verified; if that fallback also failed, the finding would have no verifier proof, could not show Verified, and would remain approval-gated.
 
-## 9. How do you handle false positives?
+## 9. Did the model fix the command injection?
+No. The model's attempt wasn't usable; the verifier-approved fix is the built-in one. That is the design: the model suggests, the verifier decides.
+
+## 10. How do you handle false positives?
 Triage reads nearby source context. In this run it recognized the `/get-table` membership check and removed that one result with the explanation that the table name is checked against a short list.
 
-## 10. What is the business value?
-The value is review efficiency and trust: a developer sees what was found, why it matters, what changed, which checks passed, and where they must approve. This demo measures that flow with 33 readable events.
+## 11. What is the business value?
+The value is review efficiency and trust: a developer sees what was found, why it matters, what changed, which checks passed, and where they must approve. This demo measures that flow with 36 readable events.
 
-## 11. How does it scale?
+## 12. How does it scale?
 This build does not claim production scale. It uses simple line-based scanning and one bundled app; scaling would require stronger parsing, job isolation, persistence, and broader test coverage.
 
-## 12. Why Python only?
+## 13. Why Python only?
 The demo app, scanner, verifier, and UI are all Python, which kept the four-hour hackathon scope coherent. More languages are a future direction, not a current capability.
 
-## 13. What did each team member build?
+## 14. What did each team member build?
 Mahavir built the scanner, agent, verifier, and deterministic retry flow. Maitri built the Streamlit UI and visual system. Vrushti built the demo app, tests, documentation, and pitch assets.
 
-## 14. What would you build next?
+## 15. What would you build next?
 The stated roadmap is PR creation, more languages, and an optional real-LLM triage layer. Any such layer would remain separate from deterministic verification.
 
-## 15. What are the limitations?
+## 16. What are the limitations?
 The tool covers one intentionally vulnerable Python demo and six controlled patterns. It does not find every vulnerability, perform autonomous production remediation, or prove real-world security from one run; the real output is risk 78 -> 1 for this scoped demo.

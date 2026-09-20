@@ -4,5 +4,6 @@ __pycache__/
 shop.db
 sandbox/
 .venv/
+.streamlit/secrets.toml
 cache/*.json
 !cache/last_run.json

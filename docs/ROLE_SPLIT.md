@@ -1,5 +1,7 @@
 # Demo Role Split
 
+Reference cache metrics: 7 raw findings, 6 real findings, 1 false alarm removed, 6 verified, 3 command-injection attempts, 36 events, risk 78 -> 1.
+
 ## Who speaks and drives
 
 | Person | Demo role | Judge questions |

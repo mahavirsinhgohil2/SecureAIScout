@@ -10,7 +10,7 @@ Speaker note: This project focuses on one controlled ShopEasy demo, not producti
 ## Slide 2: The solution
 - SecureAI Scout turns a local scan into a reviewable workflow.
 - It investigates, triages context, proposes targeted changes, verifies them in a sandbox, and asks for approval.
-- The real run produced 7 raw findings, 6 real findings, and 1 removed false alarm.
+- The final cache contains 36 events: 7 raw findings, 6 real findings, and 1 removed false alarm.
 
 Speaker note: Describe it as deterministic scanner + rule-based triage + deterministic sandbox verifier.
 
@@ -20,7 +20,7 @@ INVESTIGATE -> TRIAGE -> FIX -> VERIFY -> REVIEW
        scan       context     snippets   sandbox     human approval
 ```
 - Every stage emits a plain-English event.
-- A failed verification can trigger one retry.
+- Command injection used 3 attempts: weak patch rejected, model correction unavailable, deterministic fallback verified.
 - Only verifier proof creates the Verified state.
 
 Speaker note: The cache contains 33 events from the real run.
@@ -54,8 +54,8 @@ Speaker note: The default path is offline and built-in rules provide explanation
 | Real findings | 6 |
 | False alarms removed | 1 |
 | Verified | 6 |
-| Command-injection attempts | 2 |
-| Event count | 33 |
+| Command-injection attempts | 3 |
+| Event count | 36 |
 | Risk before -> after | 78 -> 1 |
 
 Speaker note: The risk score uses deterministic severity weights and a small residual after verification; it is a secondary signal, not a security guarantee.

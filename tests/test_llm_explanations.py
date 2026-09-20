@@ -9,7 +9,7 @@ class MockClient:
         self.error = error
         self.proposal = proposal
 
-    def explain(self, title, impact, fallback):
+    def explain(self, title, impact,     findstr : The term 'findstr' is not recognizedfallback):
         if self.error:
             raise self.error
         return self.result, "llm"

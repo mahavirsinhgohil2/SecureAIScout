@@ -1,5 +1,7 @@
 # SecureAI Scout Release Runbook
 
+Reference cache metrics: 7 raw findings, 6 real findings, 1 false alarm removed, 6 verified, 3 command-injection attempts, 36 events, risk 78 -> 1.
+
 ## Morning checklist
 
 - Pull the latest committed branch.

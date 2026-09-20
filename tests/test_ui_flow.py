@@ -15,7 +15,7 @@ class UiFlowTests(unittest.TestCase):
 
     def test_replay_review_shows_six_verified_findings_and_risk(self):
         app_test = AppTest.from_file(self.UI_PATH).run()
-        self.assertEqual([button.label for button in app_test.button], ["Start demo scan"])
+        self.assertEqual([button.label for button in app_test.button], ["See a verified example run", "Run a live scan"])
         app_test.button[0].click().run()
         self.assertEqual(sum(bool(finding.verification_proof) for finding in app_test.session_state.findings), 6)
         self.assertIn("78 → 1", " ".join(metric.value for metric in app_test.metric))

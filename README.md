@@ -1,5 +1,7 @@
 # SecureAI Scout
 
+Live app: <URL after deploy>
+
 SecureAI Scout is a small, offline-first security review agent for the bundled, intentionally vulnerable ShopEasy Flask demo.
 
 ## Workflow
@@ -20,6 +22,8 @@ python -m unittest discover -s tests
 The demo writes `cache/last_run.json`. The Streamlit app can replay that file without network access.
 
 The real run reports risk `78 -> 1`, not zero. The residual score is an intentional floor because a scan of a single demo app never proves zero risk.
+
+The final cache records 36 events: 7 raw findings, 6 real findings, 1 false alarm removed, and 6 verified. The command-injection finding used 3 attempts: the model suggests, the verifier decides, and the deterministic fallback is verified.
 
 ## Safety scope
 
