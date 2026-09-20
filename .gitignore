@@ -3,5 +3,6 @@ __pycache__/
 *.pyc
 shop.db
 sandbox/
+.venv/
 cache/*.json
 !cache/last_run.json

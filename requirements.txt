@@ -1,0 +1,7 @@
+streamlit
+flask
+werkzeug
+markupsafe
+pytest
+python-dotenv
+huggingface_hub>=0.26.0
